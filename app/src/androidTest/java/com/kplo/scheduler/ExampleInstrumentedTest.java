@@ -1,4 +1,4 @@
-package com.kplo.shoppingmall;
+package com.kplo.scheduler;
 
 import android.content.Context;
 
