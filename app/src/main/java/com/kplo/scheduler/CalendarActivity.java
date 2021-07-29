@@ -210,8 +210,8 @@ public class CalendarActivity extends AppCompatActivity {
                 return true;
             //설정버튼
             case R.id.setting:
-//                Intent intent = new Intent(getApplicationContext(), Setting.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), Setting.class);
+                startActivity(intent);
                 Toast.makeText(context, "setting", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);

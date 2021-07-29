@@ -8,5 +8,6 @@
     <color name="blue">#005FFF</color>
     <color name="black">#000000</color>
     <color name="color_select_day">#808080</color>
+    <color name="lightGray">#E8E8E8</color>
 
 </resources>
