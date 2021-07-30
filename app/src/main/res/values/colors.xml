@@ -9,5 +9,27 @@
     <color name="black">#000000</color>
     <color name="color_select_day">#808080</color>
     <color name="lightGray">#E8E8E8</color>
+    <color name="calendar_babyPink">#FFC0B9</color>
+    <color name="calendar_lightRed">#FF6060</color>
+    <color name="calendar_red">#FF1D1D</color>
+    <color name="calendar_lightYellow">#FFDB93</color>
+    <color name="calendar_yellow">#FFC43B</color>
+    <color name="calendar_orange">#FF9305</color>
+    <color name="calendar_lightGreen">#B3DA8D</color>
+    <color name="calendar_green">#86CA63</color>
+    <color name="calendar_darkGreen">#378927</color>
+    <color name="calendar_sprayBlue">#83E3F2</color>
+    <color name="calendar_skyBlue">#51BBE9</color>
+    <color name="calendar_lightBlue">#0099FF</color>
+    <color name="calendar_light_royal_blue">#A1AFF5</color>
+    <color name="calendar_royalBlue">#5062DA</color>
+    <color name="calendar_blue">#0020FF</color>
+    <color name="calendar_pink">#EE86E3</color>
+    <color name="calendar_purple">#AF45D5</color>
+    <color name="calendar_darkPurple">#7C0A98</color>
+
+
+
+
 
 </resources>

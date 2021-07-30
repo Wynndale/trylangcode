@@ -17,20 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:background="@color/lightGray"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:src="@drawable/ic_west_arrow" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="125dp"
-                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:gravity="center"
                 android:text="설정"
                 android:textColor="@color/black"
                 android:textSize="28sp" />
@@ -57,25 +60,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="190px"
+                android:layout_marginLeft="80px"
                 android:src="@drawable/ic_volume" />
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="270px"
+                android:layout_marginLeft="260px"
                 android:src="@drawable/ic_vibrate" />
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="270px"
+                android:layout_marginLeft="260px"
                 android:src="@drawable/ic_mute" />
         </LinearLayout>
 
@@ -96,8 +101,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="45dp"
                     android:text="소리"
-                    android:textSize="18sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/btn_vibrate"
@@ -105,8 +110,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="60dp"
                     android:text="진동"
-                    android:textSize="18sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/btn_mute"
@@ -114,8 +119,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="60dp"
                     android:text="무음"
-                    android:textSize="18sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </RadioGroup>
 
         </LinearLayout>
@@ -155,8 +160,8 @@
                     android:layout_height="63dp"
                     android:layout_marginLeft="80dp"
                     android:text="Light"
-                    android:textSize="18sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/btn_dark"
@@ -164,8 +169,8 @@
                     android:layout_height="63dp"
                     android:layout_marginLeft="100dp"
                     android:text="Dark"
-                    android:textSize="18sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </RadioGroup>
 
         </LinearLayout>
@@ -188,14 +193,182 @@
 
         </LinearLayout>
 
+        <!-- 캘린더 색상 설정 버튼들 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="77dp"
-            android:layout_marginLeft="30dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+            android:layout_marginRight="25dp"
+            android:orientation="vertical">
 
+            <!-- 캘린더 색상 설정 첫 번째 줄 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
+                <Button
+                    android:id="@+id/btn_set_babyPink"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_babyPink" />
+
+                <Button
+                    android:id="@+id/btn_set_lightRed"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_lightRed" />
+
+                <Button
+                    android:id="@+id/btn_set_red"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_red" />
+
+                <Button
+                    android:id="@+id/btn_set_lightYellow"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_lightYellow" />
+
+                <Button
+                    android:id="@+id/btn_set_yellow"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_yellow" />
+
+                <Button
+                    android:id="@+id/btn_set_orange"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_orange" />
+
+            </LinearLayout>
+
+            <!-- 캘린더 색상 설정 두 번째 줄 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <Button
+                    android:id="@+id/btn_set_lightGreen"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_lightGreen" />
+
+                <Button
+                    android:id="@+id/btn_set_green"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_green" />
+
+                <Button
+                    android:id="@+id/btn_set_darkGreen"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_darkGreen" />
+
+                <Button
+                    android:id="@+id/btn_set_sprayBlue"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_sprayBlue" />
+
+                <Button
+                    android:id="@+id/btn_set_skyBlue"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_skyBlue" />
+
+                <Button
+                    android:id="@+id/btn_set_lightBlue"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_lightBlue" />
+
+            </LinearLayout>
+
+            <!-- 캘린더 색상 설정 세 번째 줄-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <Button
+                    android:id="@+id/btn_set_light_royal_blue"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_light_royal_blue" />
+
+                <Button
+                    android:id="@+id/btn_set_royalBlue"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_royalBlue" />
+
+                <Button
+                    android:id="@+id/btn_set_blue"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_blue" />
+
+                <Button
+                    android:id="@+id/btn_set_pink"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_pink" />
+
+                <Button
+                    android:id="@+id/btn_set_purple"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_purple" />
+
+                <Button
+                    android:id="@+id/btn_set_darkPurple"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/calendar_color_button"
+                    android:backgroundTint="@color/calendar_darkPurple" />
+
+            </LinearLayout>
         </LinearLayout>
 
 
