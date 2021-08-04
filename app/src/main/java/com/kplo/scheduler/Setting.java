@@ -2,6 +2,7 @@ package com.kplo.scheduler;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -11,8 +12,10 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -22,6 +25,8 @@ public class Setting extends AppCompatActivity {
     RadioButton btn_volume;
     RadioButton btn_vibrate;
     RadioButton btn_mute;
+    ImageView btn_backspace;
+
     private RadioGroup radioGroup;
     private SharedPreferences appData;
     private SharedPreferences.Editor editor;
@@ -62,8 +67,17 @@ public class Setting extends AppCompatActivity {
         btn_volume = findViewById(R.id.btn_volume);
         btn_vibrate = findViewById(R.id.btn_vibrate);
         btn_mute = findViewById(R.id.btn_mute);
+        btn_backspace = findViewById(R.id.btn_backspace);
 
         radioGroup = findViewById(R.id.group_mode);
+
+
+        btn_backspace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         // [테마 설정] - 라디오 그룹 클릭 리스너

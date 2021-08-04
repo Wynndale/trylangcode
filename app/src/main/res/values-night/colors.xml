@@ -17,6 +17,7 @@
     <color name="blue">#005FFF</color>
     <color name="black">#000000</color>
     <color name="color_select_day">#808080</color>
+    <color name="calendar_background">#000000</color>
     <color name="setting_gray">#373737</color>
     <color name="text_main_color">#FFFFFF</color>
     <color name="calendar_babyPink">#FFC0B9</color>
