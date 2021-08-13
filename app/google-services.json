@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "674112888128",
+    "project_id": "scheduler-d4ae1",
+    "storage_bucket": "scheduler-d4ae1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674112888128:android:aa3327e56049c33377eea5",
+        "android_client_info": {
+          "package_name": "com.kplo.scheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674112888128-pv503sflsm0rhagnor8vifqji8sd2dtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa0QNb3L1zfKTgljo254qRzRGjGQngurM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674112888128-pv503sflsm0rhagnor8vifqji8sd2dtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
