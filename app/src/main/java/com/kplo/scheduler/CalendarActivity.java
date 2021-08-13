@@ -70,6 +70,7 @@ public class CalendarActivity extends AppCompatActivity {
 
         new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
 
+        // 클릭 이벤트
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -113,15 +114,27 @@ public class CalendarActivity extends AppCompatActivity {
             /*특정날짜 달력에 점표시해주는곳*/
             /*월은 0이 1월 년,일은 그대로*/
             //string 문자열인 Time_Result 을 받아와서 ,를 기준으로짜르고 string을 int 로 변환
-            for(int i = 0 ; i < Time_Result.length ; i ++){
-                CalendarDay day = CalendarDay.from(calendar);
+            for (int i = 0; i < Time_Result.length; i++) {
+
+
+                //이부분에서 day를 선언하면 초기 값에 오늘 날짜 데이터 들어간다.
+                //오늘 날짜 데이터를 첫 번째 인자로 넣기 때문에 데이터가 하나씩 밀려 마지막 데이터는 표시되지 않고, 오늘 날짜 데이터가 표시 됨.
+                // day선언 주석처리
+
+                //                CalendarDay day = CalendarDay.from(calendar);
+                //                Log.e("데이터 확인","day"+day);
                 String[] time = Time_Result[i].split(",");
+
                 int year = Integer.parseInt(time[0]);
                 int month = Integer.parseInt(time[1]);
                 int dayy = Integer.parseInt(time[2]);
 
+                //선언문을 아래와 같은 위치에 선언
+                //먼저 .set 으로 데이터를 설정한 다음 CalendarDay day = CalendarDay.from(calendar); 선언해주면 첫 번째 인자로 새로 정렬한 데이터를 넣어 줌.
+                calendar.set(year, month - 1, dayy);
+                CalendarDay day = CalendarDay.from(calendar);
                 dates.add(day);
-                calendar.set(year,month-1,dayy);
+
             }
 
 
@@ -137,7 +150,7 @@ public class CalendarActivity extends AppCompatActivity {
                 return;
             }
 
-            materialCalendarView.addDecorator(new EventDecorator(Color.GREEN, calendarDays,CalendarActivity.this));
+            materialCalendarView.addDecorator(new EventDecorator(Color.RED, calendarDays,CalendarActivity.this));
         }
     }
 
@@ -212,7 +225,7 @@ public class CalendarActivity extends AppCompatActivity {
             case R.id.setting:
                 Intent intent = new Intent(getApplicationContext(), Setting.class);
                 startActivity(intent);
-                Toast.makeText(context, "setting", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "setting page", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
