@@ -109,7 +109,6 @@ public class Setting extends AppCompatActivity {
             }
         });
 
-
         // [알림 설정] 소리 버튼 클릭 리스너
         btn_volume.setOnClickListener(new View.OnClickListener() {
             @Override

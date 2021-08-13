@@ -1,6 +1,7 @@
 package com.kplo.scheduler.decorators;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 
 import com.kplo.scheduler.R;
@@ -18,20 +19,20 @@ import java.util.HashSet;
 public class EventDecorator implements DayViewDecorator {
 
     private int color;
-    private HashSet<CalendarDay> dates;
+    private CalendarDay date;
 
-    public EventDecorator(int color, Collection<CalendarDay> dates,Activity context) {
+    public EventDecorator(int color, CalendarDay date, Activity context) {
         this.color = color;
-        this.dates = new HashSet<>(dates);
+        this.date = date;
     }
 
     @Override
     public boolean shouldDecorate(CalendarDay day) {
-        return dates.contains(day);
+        return date != null && day.equals(date);
     }
 
     @Override
     public void decorate(DayViewFacade view) {
-        view.addSpan(new DotSpan(5, color)); // 날자밑에 점
+        view.addSpan(new CustomMultipleDotSpan(5f, color)); // 날자밑에 점
     }
 }

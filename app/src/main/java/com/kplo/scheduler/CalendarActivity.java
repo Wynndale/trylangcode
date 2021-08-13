@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,9 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+import com.prolificinteractive.materialcalendarview.format.DateFormatDayFormatter;
+import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +48,7 @@ public class CalendarActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navView;
     Toolbar toolbar;
+    TextView toolbar_text;
     Context context = this;
 
     @Override
@@ -52,14 +57,35 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         setToolbar();
 
+
+        //오늘 날짜 불러와서 툴바 텍스트 수정
+        CalendarDay today = CalendarDay.today();
+        String today_year = Integer.toString(today.getYear());
+        String today_month = Integer.toString(today.getMonth());
+
+        toolbar_text = (TextView)findViewById(R.id.toolbar_text);
+
+        String text = today_year + "년 " + today_month + "월";
+        toolbar_text.setText(text);
+
+
         materialCalendarView = (MaterialCalendarView)findViewById(R.id.calendarView);
 
+        //캘린더 위의 톱바 비활성화
+        materialCalendarView.setTopbarVisible(false);
+        //현재 날짜를 선택
+        materialCalendarView.setSelectedDate(today);
+
+        //state().edit()를 통해 뭘 어떻게 보여줄 것이다를 commit() 하기 위한 코드
         materialCalendarView.state().edit()
-                .setFirstDayOfWeek(Calendar.SUNDAY)
+                .setFirstDayOfWeek(Calendar.SUNDAY) //한 주의 시작은 일요일로 지정
                 .setMinimumDate(CalendarDay.from(2017, 0, 1)) // 달력의 시작
                 .setMaximumDate(CalendarDay.from(2030, 11, 31)) // 달력의 끝
-                .setCalendarDisplayMode(CalendarMode.MONTHS)
-                .commit();
+                .setCalendarDisplayMode(CalendarMode.MONTHS) //월로 달력을 표시되게 구성
+                .commit(); //위의 코드가 작성되게 commit
+
+        //달력을 4주, 5주, 6주 등등 주차에 맞게 높이를 dynamic하게 보여줄 것이다는 설정
+        materialCalendarView.setDynamicHeightEnabled(true);
 
         materialCalendarView.addDecorators(
                 new SundayDecorator(),
@@ -70,7 +96,8 @@ public class CalendarActivity extends AppCompatActivity {
 
         new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
 
-        // 클릭 이벤트
+
+        // 날짜 클릭 시 이벤트
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -87,7 +114,36 @@ public class CalendarActivity extends AppCompatActivity {
                 Log.i("shot_Day test", shot_Day + "");
                 materialCalendarView.clearSelection();
 
+
+                materialCalendarView.addDecorator(new EventDecorator(Color.RED, date ,CalendarActivity.this));
+
                 Toast.makeText(getApplicationContext(), shot_Day , Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //달력이 변화할 때 이벤트
+        materialCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
+            @Override
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                String Year = Integer.toString(date.getYear());
+                String Month = Integer.toString(date.getMonth() + 1);
+
+                CalendarDay today = CalendarDay.today();
+                String today_year = Integer.toString(today.getYear());
+                String today_month = Integer.toString(today.getMonth());
+
+                String text = today_year + "년 " + today_month + "월";
+                toolbar_text.setText(text);
+
+                // 선택된 연도와 월이 오늘 날짜의 연도와 월과 다르면 선택된 날짜의 연도와 월로 바꾸기
+                if(!Year.equals(today_year) || !Month.equals(today_month)){
+                    text = Year + "년 " + Month + "월";
+                }
+
+                toolbar_text.setText(text);
+
+
+                Toast.makeText(getApplicationContext(), text , Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -150,7 +206,10 @@ public class CalendarActivity extends AppCompatActivity {
                 return;
             }
 
-            materialCalendarView.addDecorator(new EventDecorator(Color.RED, calendarDays,CalendarActivity.this));
+//            //일정 dots 색상 배열
+//            String[] colors = getResources().getStringArray(R.array.colors);
+//
+//            materialCalendarView.addDecorator(new EventDecorator(colors, calendarDays,CalendarActivity.this));
         }
     }
 
