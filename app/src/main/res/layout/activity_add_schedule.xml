@@ -24,7 +24,6 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
             <TextView
-                android:id="@+id/toolbar_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -39,23 +38,21 @@
             android:background="@color/calendar_background">
 
             <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                app:mcv_selectionColor="@color/color_select_day"
-                app:mcv_calendarMode="month"
                 app:mcv_arrowColor="@color/text_main_color"
+                app:mcv_calendarMode="month"
+                app:mcv_selectionColor="@color/color_select_day"
+                app:mcv_showOtherDates="all"
                 app:mcv_weekDayLabels="@color/text_main_color"
-                app:mcv_weekDayTextAppearance="@color/text_main_color"
-                app:mcv_showOtherDates="all"/>
+                app:mcv_weekDayTextAppearance="@color/text_main_color" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"></LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,6 +65,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/ic_bar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="35dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:src="@drawable/ic_close" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_waste_can" />
 
         </LinearLayout>
 
@@ -76,42 +97,26 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingHorizontal="50dp">
+            android:paddingHorizontal="33dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_schedule_detail" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15.일"
+                android:text= "   여행 준비물 챙기기"
                 android:textColor="#000000"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:text="     음력 6.6   "
-                android:textColor="#777777"
-                android:textSize="10sp" />
+                android:textSize="17dp" />
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
                 android:layout_weight="1" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:text="Upcoming  "
-                android:textColor="#777777"
-                android:textSize="10sp" />
-
-            <ImageView
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_marginTop="7dp"
-                android:src="@drawable/ic_add_button" />
         </LinearLayout>
 
         <ScrollView
@@ -124,6 +129,13 @@
                 android:layout_marginTop="5dp"
                 android:stretchColumns="0, 1">
 
+                <LinearLayout
+                    android:layout_width="312dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"></LinearLayout>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="1dp">
@@ -133,18 +145,18 @@
                         android:layout_height="48dp"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="43dp">
+                        android:paddingHorizontal="40dp">
 
                         <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_circle" />
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_clock" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text= "  여행 준비물 챙기기"
-                            android:textColor="#000000"
+                            android:text= "  8월 14일 - 8월 15일"
+                            android:textColor="#777777"
                             android:textSize="13dp" />
 
                         <View
@@ -152,17 +164,7 @@
                             android:layout_height="20dp"
                             android:layout_weight="1" />
 
-                        <ImageView
-                            android:layout_width="56dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/ic_time_box" />
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/ic_next"/>
                     </LinearLayout>
-
                 </TableRow>
 
                 <LinearLayout
@@ -181,18 +183,25 @@
                         android:layout_height="48dp"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="43dp">
+                        android:paddingHorizontal="40dp">
 
                         <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_circle" />
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_alarm" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text= "  타코 먹으러 가기"
-                            android:textColor="#000000"
+                            android:text= "  시간 설정"
+                            android:textColor="#777777"
+                            android:textSize="13dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text= "          15시"
+                            android:textColor="#777777"
                             android:textSize="13dp" />
 
                         <View
@@ -200,65 +209,7 @@
                             android:layout_height="20dp"
                             android:layout_weight="1" />
 
-                        <ImageView
-                            android:layout_width="56dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/ic_time_box" />
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/ic_next"/>
                     </LinearLayout>
-
-                </TableRow>
-
-                <LinearLayout
-                    android:layout_width="312dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"></LinearLayout>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="43dp">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text= "  가족 모임"
-                            android:textColor="#000000"
-                            android:textSize="13dp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1" />
-
-                        <ImageView
-                            android:layout_width="56dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/ic_time_box" />
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/ic_next"/>
-                    </LinearLayout>
-
                 </TableRow>
 
                 <LinearLayout
