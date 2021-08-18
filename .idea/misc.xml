@@ -19,6 +19,13 @@
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_setting.xml" value="0.19461077844311378" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_sign_up2.xml" value="0.16" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/navi_header.xml" value="0.135546875" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/drawable/ic_back.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/drawable/ic_delete.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/drawable/ic_logout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/drawable/ic_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/drawable/ic_read_more.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/drawable/ic_setting_.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20-01-13/AndroidStudioProjects/Scheduler/app/src/main/res/layout/activity_mypage.xml" value="0.20567375886524822" />
         <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/drawable/ic_circle.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/drawable/ic_next.xml" value="0.2824074074074074" />
         <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_add_schedule.xml" value="0.4166666666666667" />
@@ -34,7 +41,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
