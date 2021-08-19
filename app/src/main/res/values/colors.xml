@@ -42,5 +42,8 @@
     <color name="calendar_pink">#EE86E3</color>
     <color name="calendar_purple">#AF45D5</color>
     <color name="calendar_darkPurple">#7C0A98</color>
+    <color name="profile">#4791FF</color>
+    <color name="profile_text">#65A8FF</color>
+    <color name="line">#80BBBBBB</color>
 
 </resources>

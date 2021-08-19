@@ -3,30 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.101171875" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/calendar_color_button.xml" value="0.2" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_add_button.xml" value="0.101171875" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.101171875" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_calendar.xml" value="0.138671875" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_launcher_background.xml" value="0.138671875" />
+        <entry key="..\:r/app/src/main/res/drawable/ic_launcher_background.xml" value="0.138671875" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_menu.xml" value="0.14765625" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_mute.xml" value="0.14765625" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_profile.xml" value="0.109375" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_schedule_detail.xml" value="0.101171875" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_setting.xml" value="0.109375" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_time_box.xml" value="0.101171875" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_vibrate.xml" value="0.137109375" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_volume.xml" value="0.137109375" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/ic_west_arrow.xml" value="0.14765625" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/drawable/more.xml" value="0.14765625" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout-v21/activity_setting.xml" value="0.25364583333333335" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_calendar.xml" value="0.264" />
+        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_calendar.xml" value="0.16666666666666666" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_home.xml" value="0.190234375" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_setting.xml" value="0.16799999999999998" />
+        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_setting.xml" value="0.19461077844311378" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/activity_sign_up2.xml" value="0.16" />
         <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/layout/navi_header.xml" value="0.135546875" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/menu/navi_menu.xml" value="0.1" />
-        <entry key="..\:/Seyeon/STUDY/Scheduler/app/src/main/res/menu/toolbar_option_btn.xml" value="0.4" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/drawable/ic_circle.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/drawable/ic_next.xml" value="0.2824074074074074" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_add_schedule.xml" value="0.4166666666666667" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_calendar.xml" value="0.1" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_home.xml" value="0.17477203647416414" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_setting.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_sign_up.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/activity_sign_up2.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/layout/navi_header.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ba116/StudioProjects/Scheduler/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2824074074074074" />
       </map>
     </option>
   </component>
