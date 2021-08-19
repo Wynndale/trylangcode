@@ -78,6 +78,25 @@ public class Setting extends AppCompatActivity {
         btn_mute = findViewById(R.id.btn_mute);
         btn_backspace = findViewById(R.id.btn_backspace);
 
+        btn_set_babyPink = findViewById(R.id.btn_set_babyPink);
+        btn_set_lightRed = findViewById(R.id.btn_set_lightRed);
+        btn_set_red = findViewById(R.id.btn_set_red);
+        btn_set_lightYellow = findViewById(R.id.btn_set_lightYellow);
+        btn_set_yellow = findViewById(R.id.btn_set_yellow);
+        btn_set_orange = findViewById(R.id.btn_set_orange);
+        btn_set_lightGreen = findViewById(R.id.btn_set_lightGreen);
+        btn_set_green = findViewById(R.id.btn_set_green);
+        btn_set_darkGreen = findViewById(R.id.btn_set_darkGreen);
+        btn_set_sprayBlue = findViewById(R.id.btn_set_sprayBlue);
+        btn_set_skyBlue = findViewById(R.id.btn_set_skyBlue);
+        btn_set_lightBlue = findViewById(R.id.btn_set_lightBlue);
+        btn_set_light_royal_blue = findViewById(R.id.btn_set_light_royal_blue);
+        btn_set_royalBlue = findViewById(R.id.btn_set_royalBlue);
+        btn_set_blue = findViewById(R.id.btn_set_blue);
+        btn_set_pink = findViewById(R.id.btn_set_pink);
+        btn_set_purple = findViewById(R.id.btn_set_purple);
+        btn_set_darkPurple = findViewById(R.id.btn_set_darkPurple);
+
         radioGroup = findViewById(R.id.group_mode);
 
 

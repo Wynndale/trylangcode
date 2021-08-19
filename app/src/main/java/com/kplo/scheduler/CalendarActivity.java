@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +43,7 @@ import java.util.concurrent.Executors;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    String time,kcal,menu;
+    String time, kcal, menu;
     private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
     Cursor cursor;
     MaterialCalendarView materialCalendarView;
@@ -49,6 +51,7 @@ public class CalendarActivity extends AppCompatActivity {
     NavigationView navView;
     Toolbar toolbar;
     TextView toolbar_text;
+    Button btn_arrow_down;
     Context context = this;
 
     @Override
@@ -61,15 +64,19 @@ public class CalendarActivity extends AppCompatActivity {
         //오늘 날짜 불러와서 툴바 텍스트 수정
         CalendarDay today = CalendarDay.today();
         String today_year = Integer.toString(today.getYear());
-        String today_month = Integer.toString(today.getMonth());
+        String today_month = Integer.toString(today.getMonth() + 1);
+        //월이 한 자리수면 앞에 0 붙여주기
+        if (today_month.length() < 2) {
+            today_month = "0" + today_month;
+        }
 
-        toolbar_text = (TextView)findViewById(R.id.toolbar_text);
+        toolbar_text = (TextView) findViewById(R.id.toolbar_text);
 
-        String text = today_year + "년 " + today_month + "월";
+        String text = today_year + ". " + today_month + "";
         toolbar_text.setText(text);
 
 
-        materialCalendarView = (MaterialCalendarView)findViewById(R.id.calendarView);
+        materialCalendarView = (MaterialCalendarView) findViewById(R.id.calendarView);
 
         //캘린더 위의 톱바 비활성화
         materialCalendarView.setTopbarVisible(false);
@@ -92,10 +99,6 @@ public class CalendarActivity extends AppCompatActivity {
                 new SaturdayDecorator(),
                 oneDayDecorator);
 
-        String[] result = {"2017,03,18","2017,04,18","2017,05,18","2017,06,18"};
-
-        new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
-
 
         // 날짜 클릭 시 이벤트
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
@@ -114,10 +117,9 @@ public class CalendarActivity extends AppCompatActivity {
                 Log.i("shot_Day test", shot_Day + "");
                 materialCalendarView.clearSelection();
 
+                materialCalendarView.addDecorator(new EventDecorator(Color.RED, date, CalendarActivity.this));
 
-                materialCalendarView.addDecorator(new EventDecorator(Color.RED, date ,CalendarActivity.this));
-
-                Toast.makeText(getApplicationContext(), shot_Day , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), shot_Day, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -125,92 +127,51 @@ public class CalendarActivity extends AppCompatActivity {
         materialCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                //넘겨진 연도와 월
                 String Year = Integer.toString(date.getYear());
                 String Month = Integer.toString(date.getMonth() + 1);
-
+                //월이 한 자리수면 앞에 0 붙여주기
+                if (Month.length() < 2) {
+                    Month = "0" + Month;
+                }
+                //오늘 연도와 월
                 CalendarDay today = CalendarDay.today();
                 String today_year = Integer.toString(today.getYear());
-                String today_month = Integer.toString(today.getMonth());
+                String today_month = Integer.toString(today.getMonth() + 1);
 
-                String text = today_year + "년 " + today_month + "월";
+                //월이 한 자리수면 앞에 0 붙여주기
+                if (today_month.length() < 2) {
+                    today_month = "0" + today_month;
+                }
+
+                String text = today_year + ". " + today_month;
                 toolbar_text.setText(text);
 
                 // 선택된 연도와 월이 오늘 날짜의 연도와 월과 다르면 선택된 날짜의 연도와 월로 바꾸기
-                if(!Year.equals(today_year) || !Month.equals(today_month)){
-                    text = Year + "년 " + Month + "월";
+                if (!Year.equals(today_year) || !Month.equals(today_month)) {
+                    text = Year + ". " + Month;
                 }
 
                 toolbar_text.setText(text);
 
-
-                Toast.makeText(getApplicationContext(), text , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private class ApiSimulator extends AsyncTask<Void, Void, List<CalendarDay>> {
-
-        String[] Time_Result;
-
-        ApiSimulator(String[] Time_Result){
-            this.Time_Result = Time_Result;
-        }
-
-        @Override
-        protected List<CalendarDay> doInBackground(@NonNull Void... voids) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            Calendar calendar = Calendar.getInstance();
-            ArrayList<CalendarDay> dates = new ArrayList<>();
-
-            /*특정날짜 달력에 점표시해주는곳*/
-            /*월은 0이 1월 년,일은 그대로*/
-            //string 문자열인 Time_Result 을 받아와서 ,를 기준으로짜르고 string을 int 로 변환
-            for (int i = 0; i < Time_Result.length; i++) {
 
 
-                //이부분에서 day를 선언하면 초기 값에 오늘 날짜 데이터 들어간다.
-                //오늘 날짜 데이터를 첫 번째 인자로 넣기 때문에 데이터가 하나씩 밀려 마지막 데이터는 표시되지 않고, 오늘 날짜 데이터가 표시 됨.
-                // day선언 주석처리
 
-                //                CalendarDay day = CalendarDay.from(calendar);
-                //                Log.e("데이터 확인","day"+day);
-                String[] time = Time_Result[i].split(",");
-
-                int year = Integer.parseInt(time[0]);
-                int month = Integer.parseInt(time[1]);
-                int dayy = Integer.parseInt(time[2]);
-
-                //선언문을 아래와 같은 위치에 선언
-                //먼저 .set 으로 데이터를 설정한 다음 CalendarDay day = CalendarDay.from(calendar); 선언해주면 첫 번째 인자로 새로 정렬한 데이터를 넣어 줌.
-                calendar.set(year, month - 1, dayy);
-                CalendarDay day = CalendarDay.from(calendar);
-                dates.add(day);
+        btn_arrow_down = findViewById(R.id.btn_arrow_down);
+        btn_arrow_down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalendarDay selectDay = new CalendarDay(2021, 10-1, 11);
+                materialCalendarView.clearSelection();
+                materialCalendarView.setCurrentDate(selectDay);
+                materialCalendarView.setSelectedDate(selectDay);
+                Toast.makeText(getApplicationContext(), "arrow down", Toast.LENGTH_SHORT).show();
 
             }
-
-
-
-            return dates;
-        }
-
-        @Override
-        protected void onPostExecute(@NonNull List<CalendarDay> calendarDays) {
-            super.onPostExecute(calendarDays);
-
-            if (isFinishing()) {
-                return;
-            }
-
-//            //일정 dots 색상 배열
-//            String[] colors = getResources().getStringArray(R.array.colors);
-//
-//            materialCalendarView.addDecorator(new EventDecorator(colors, calendarDays,CalendarActivity.this));
-        }
+        });
     }
 
 
@@ -218,7 +179,7 @@ public class CalendarActivity extends AppCompatActivity {
      * onCreate에서 호출
      * 클래스 내 DrawerLayout drawerLayout; NavigationView navView; Toolbar toolbar; 선언 필요
      */
-    protected void setToolbar(){
+    protected void setToolbar() {
         //툴바 설정
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -239,21 +200,17 @@ public class CalendarActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.dating){
+                if (id == R.id.dating) {
                     Toast.makeText(context, title + ": dating calendar", Toast.LENGTH_SHORT).show();
-                }
-                else if(id == R.id.work){
+                } else if (id == R.id.work) {
                     Toast.makeText(context, title + ": work calendar", Toast.LENGTH_SHORT).show();
-                }
-                else if(id == R.id.daily){
+                } else if (id == R.id.daily) {
                     Toast.makeText(context, title + ": daily calendar", Toast.LENGTH_SHORT).show();
-                }
-                else if(id == R.id.event){
+                } else if (id == R.id.event) {
 //                    Intent intent = new Intent(getApplicationContext(), Graph.class);
 //                    startActivity(intent);
                     Toast.makeText(context, title + ": event calendar", Toast.LENGTH_SHORT).show();
-                }
-                else if(id == R.id.logout){
+                } else if (id == R.id.logout) {
 //                    Intent intent = new Intent(getApplicationContext(), Graph.class);
 //                    startActivity(intent);
                     Toast.makeText(context, title + ": log out", Toast.LENGTH_SHORT).show();
@@ -264,9 +221,10 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
     }
+
     //툴바 우측에 버튼 생성 (설정버튼)
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.toolbar_option_btn, menu);
         return true;
@@ -274,13 +232,16 @@ public class CalendarActivity extends AppCompatActivity {
 
     //툴바에 버튼 클릭 시
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             //네비게이션드로어
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
-            //설정버튼
+            //마이페이지 버튼
+            case R.id.my_page:
+                Toast.makeText(context, "my page", Toast.LENGTH_SHORT).show();
+                //설정 버튼
             case R.id.setting:
                 Intent intent = new Intent(getApplicationContext(), Setting.class);
                 startActivity(intent);
@@ -291,10 +252,10 @@ public class CalendarActivity extends AppCompatActivity {
 
     //네비게이션 열려있을때 뒤로가기로 버튼 닫기
     @Override
-    public void onBackPressed(){
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }

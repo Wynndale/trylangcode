@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/setting_gray"
+            android:background="@color/toolbar"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -27,9 +27,16 @@
                 android:id="@+id/toolbar_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:text="daily scheduler"
+                android:textColor="@color/text_main_color"
                 android:textSize="20sp"/>
+            <Button
+                android:id="@+id/btn_arrow_down"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_arrow_down"/>
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
@@ -47,8 +54,7 @@
                 app:mcv_calendarMode="month"
                 app:mcv_arrowColor="@color/text_main_color"
                 app:mcv_weekDayLabels="@color/text_main_color"
-                app:mcv_weekDayTextAppearance="@color/text_main_color"
-                app:mcv_showOtherDates="all"/>
+                app:mcv_weekDayTextAppearance="@color/text_main_color"/>
         </LinearLayout>
 
         <LinearLayout
