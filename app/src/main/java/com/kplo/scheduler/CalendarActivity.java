@@ -1,5 +1,6 @@
 package com.kplo.scheduler;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,10 +14,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -42,6 +45,8 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 public class CalendarActivity extends AppCompatActivity {
+    // DatePickerActivity 에게 보낼 요청 코드
+    public static final int REQUEST_CODE_MENU = 101;
 
     String time, kcal, menu;
     private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
@@ -53,6 +58,7 @@ public class CalendarActivity extends AppCompatActivity {
     TextView toolbar_text;
     Button btn_arrow_down;
     Context context = this;
+    DatePickerDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,20 +165,38 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
 
-
         btn_arrow_down = findViewById(R.id.btn_arrow_down);
         btn_arrow_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CalendarDay selectDay = new CalendarDay(2021, 10-1, 11);
-                materialCalendarView.clearSelection();
-                materialCalendarView.setCurrentDate(selectDay);
-                materialCalendarView.setSelectedDate(selectDay);
-                Toast.makeText(getApplicationContext(), "arrow down", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "날짜를 선택하세요.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), DatePickerActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_MENU);
 
             }
         });
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_MENU){
+
+            if (resultCode == RESULT_OK){
+                int year = data.getIntExtra("mYear", 2021);
+                int month = data.getIntExtra("mMonth", 1);
+                int day = data.getIntExtra("mDay", 1);
+
+                CalendarDay selectDay = new CalendarDay(year, month, day);
+                materialCalendarView.clearSelection();
+                materialCalendarView.setCurrentDate(selectDay);
+                materialCalendarView.setSelectedDate(selectDay);
+                Toast.makeText(getApplicationContext(), year + "년 " + (month+1) + "월 " + day + "일로 이동", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+
+    }
+
 
 
     /* 툴바 및 툴바기능 설정 함수.
@@ -259,4 +283,11 @@ public class CalendarActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    private DatePickerDialog.OnDateSetListener DatePickerlistener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Toast.makeText(getApplicationContext(), year + "년" + monthOfYear + "월" + dayOfMonth + "일", Toast.LENGTH_SHORT).show();
+        }
+    };
 }
