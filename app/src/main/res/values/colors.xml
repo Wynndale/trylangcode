@@ -45,6 +45,4 @@
     <color name="profile">#4791FF</color>
     <color name="profile_text">#65A8FF</color>
     <color name="line">#80BBBBBB</color>
-    <!--팝업배경-->
-    <color name="dialogColor">#A6333333</color>
 </resources>
