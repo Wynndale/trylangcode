@@ -288,27 +288,4 @@
         app:menu="@menu/navi_menu"
         />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTop0f="parent"
-        app:layout_constraintBottom_toBpttom0f="parent"
-        app:layout_constraintStart_toStart0f="parent"
-        app:layout_constraintEnd_toEnd0f="parent"
-        >
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/white"
-            app:itemIconTint="@color/black"
-            app:menu="@menu/bottom_menu"
-            />
-    </FrameLayout>
-
 </androidx.drawerlayout.widget.DrawerLayout>
