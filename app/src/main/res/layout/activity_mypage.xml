@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:gravity="center"
-                android:src="@drawable/ic_setting_" />
+                android:src="@drawable/ic_setting" />
 
         </LinearLayout>
 

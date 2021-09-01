@@ -27,13 +27,13 @@
 
                 <ImageView
                     android:id="@+id/btn_backspace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:clickable="true"
-                    android:src="@drawable/ic_west_arrow" />
+                    android:src="@drawable/ic_back" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                     android:gravity="center"
                     android:text="설정"
                     android:textColor="@color/text_main_color"
-                    android:textSize="28sp" />
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -138,7 +138,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="35dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -191,7 +191,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="35dp"
                 android:orientation="horizontal">
 
                 <TextView

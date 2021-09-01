@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.os.AsyncTask;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kplo.scheduler.decorators.EventDecorator;
 import com.kplo.scheduler.decorators.OneDayDecorator;
@@ -36,13 +36,8 @@ import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-import com.prolificinteractive.materialcalendarview.format.DateFormatDayFormatter;
-import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.concurrent.Executors;
 
 public class CalendarActivity extends AppCompatActivity {
     // DatePickerActivity 에게 보낼 요청 코드
@@ -53,12 +48,13 @@ public class CalendarActivity extends AppCompatActivity {
     Cursor cursor;
     MaterialCalendarView materialCalendarView;
     DrawerLayout drawerLayout;
-    NavigationView navView;
+    NavigationView navi_view;
     Toolbar toolbar;
     TextView toolbar_text;
     Button btn_arrow_down;
     Context context = this;
     DatePickerDialog dialog;
+    BottomNavigationView bottom_navi_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +171,32 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
+
+
+        bottom_navi_view = findViewById(R.id.bottom_navi_view);
+        bottom_navi_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.searchMenu:
+                        Toast.makeText(context, "search menu", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.homeMenu:
+                        Intent intentHome = new Intent(context, CalendarActivity.class);
+                        intentHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intentHome.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        Toast.makeText(context, "home menu", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.memoMenu:
+                        Toast.makeText(context, "memo menu", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+                return true;
+            }
+        });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
@@ -214,8 +236,8 @@ public class CalendarActivity extends AppCompatActivity {
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        navView = findViewById(R.id.nav_view);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        navi_view = findViewById(R.id.navi_view);
+        navi_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 menuItem.setChecked(true);
@@ -241,7 +263,7 @@ public class CalendarActivity extends AppCompatActivity {
                 }
 
                 //menuItem.setChecked(false);
-                return true;
+                return false;
             }
         });
     }
